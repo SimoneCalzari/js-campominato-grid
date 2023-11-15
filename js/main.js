@@ -32,6 +32,44 @@ function elementsListener (numElements) {
 
 }
 
+function clickPlay() {
+  button.addEventListener('click', 
+    function() {
+      field.innerHTML = '';
+      field.classList.add('active');
+      newElements('div', 'cell-10', 100);
+      elementsListener(100);
+      select.value = 'Hard';
+    }
+  )
+}
+
+function selectDifficulty() {
+  select.addEventListener('change',
+  function() {
+    if (select.value === 'Easy'){
+      field.innerHTML = '';
+      field.classList.add('active');
+      newElements('div', 'cell-7', 49);
+      elementsListener(49);
+    } else if (select.value === 'Medium'){
+      field.innerHTML = '';
+      field.classList.add('active');
+      newElements('div', 'cell-9', 81);
+      elementsListener(81);
+    } else {
+      field.innerHTML = '';
+      field.classList.add('active');
+      newElements('div', 'cell-10', 100);
+      elementsListener(100);
+    }
+  }
+  )
+}
+
+
+
+
 
 const field = document.querySelector('div.field');
 console.log(field);
@@ -39,11 +77,24 @@ console.log(field);
 const button = document.querySelector('button');
 console.log(button);
 
-button.addEventListener('click', 
-  function() {
-    field.innerHTML = '';
-    field.classList.add('active');
-    newElements('div', 'cell-10', 100);
-    elementsListener(100);
-  }
-);
+const select = document.querySelector('select');
+console.log(select);
+
+// const difficultyHard = document.querySelector('select option:nth-of-type(1)');
+// console.log(difficultyHard);
+
+// const difficultyMid = document.querySelector('select option:nth-of-type(2)');
+// console.log(difficultyMid);
+
+// const difficultyEasy = document.querySelector('select option:nth-of-type(3)');
+// console.log(difficultyEasy);
+
+
+clickPlay();
+
+selectDifficulty();
+
+
+
+
+

@@ -17,9 +17,24 @@ header {
   align-items: center;
 }
 
-header button {
+header label {
   margin-left: auto;
-  padding: 0 20px;
+  margin-right: 5px;
+}
+
+header select {
+  width: 100px;
+  background-color: #e9e9ed;
+  border-radius: 5px;
+  border-color: black;
+  padding: 2px;
+}
+
+header button {
+  padding: 2px 20px;
+  margin-left: 30px;
+  border-radius: 5px;
+  border-color: black;
 }
 
 
@@ -57,7 +72,27 @@ main .field .cell-10 {
   cursor: pointer;
 }
 
-main .field .cell-10.active {
+main .field .cell-9 {
+  width: calc(100% / 9);
+  height: calc(100% / 9);
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+main .field .cell-7 {
+  width: calc(100% / 7);
+  height: calc(100% / 7);
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+main .field .active {
   background-color: lightseagreen;
 }
 
