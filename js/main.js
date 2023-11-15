@@ -10,10 +10,11 @@ function newElements(typeElement, classElement, numElements) {
     cell.classList = classElement; // ASSEGNO LA CLASSE
     cell.innerHTML = `${i}`; // INSERISCO CONTENUTO
     field.append(cell); // INSERISCO NELL HTML DENTRO AL FIELD
+    // EVENT LISTENER ALLE CELLE
     cell.addEventListener('click',
     function() {
       cell.classList.add('cell-clicked'); // AGGIUNGO CLASSE AL CLICKED PER CAMBIARE SFONDO CELLA
-      console.log(`La cella cliccata è la ${i}`); // MOSTRO IN CONSOLE LA CELLA CLICCATA
+      console.log(`La cella cliccata è la ${cell.innerHTML}`); // MOSTRO IN CONSOLE LA CELLA CLICCATA
     })
   }
 }
@@ -35,22 +36,18 @@ function selectDifficulty() {
   // ASCOLTATORE DI EVENTI QUANDO IL VALUE DI SELECT CAMBIA
   select.addEventListener('change',
   function() {
+    field.innerHTML = '';
+    field.classList.add('active'); // SE VOGLIAMO FAR COMPARIRE LA GRIGLIA ANCHE PRIMA DI PREMERE SU PLAY QUESTA CLASSE SERVE
     // CASO DIFFICOLTà SEMPLICE
     if (select.value === 'Easy'){
-      field.innerHTML = '';
-      field.classList.add('active');
       newElements('div', 'cell-7', 49);
     } 
     // CASO DIFFICOLTà MEDIA
     else if (select.value === 'Medium'){
-      field.innerHTML = '';
-      field.classList.add('active');
       newElements('div', 'cell-9', 81);
     }
     // CASO DIFFICOLTà DIFFICILE(DEFAULT) 
     else {
-      field.innerHTML = '';
-      field.classList.add('active');
       newElements('div', 'cell-10', 100);
     }
   }
@@ -62,16 +59,19 @@ function selectDifficulty() {
 
 
 
-
+// LOGICA PROGRAMMA
 
 // VARIABILI DEGLI ELEMENTI DEL DOM UTILIZZATI NELLA FUNCTION
 const field = document.querySelector('div.field');
 const button = document.querySelector('button');
 const select = document.querySelector('select');
 
+
 // CHIAMO LE FUNZIONI PER IL MIO GIOCO
 clickPlay();
 selectDifficulty();
+
+
 
 
 
