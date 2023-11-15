@@ -50,7 +50,7 @@ main {
   justify-content: center;
 }
 
- main .field {
+.field {
   width: 400px;
   height: 400px;
   flex-wrap: wrap;
@@ -58,44 +58,36 @@ main {
   display: none;
 }
 
-main .field.active {
+.active {
   display: flex;
 }
 
-main .field .cell-10 {
+.field > div {
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.cell-10 {
   width: calc(100% / 10);
   height: calc(100% / 10);
-  border: 1px solid black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
 }
 
-main .field .cell-9 {
+.cell-9 {
   width: calc(100% / 9);
   height: calc(100% / 9);
-  border: 1px solid black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
 }
 
-main .field .cell-7 {
+.cell-7 {
   width: calc(100% / 7);
   height: calc(100% / 7);
-  border: 1px solid black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
 }
 
-main .field .active {
+.cell-clicked {
   background-color: lightseagreen;
 }
-
 
 footer {
   padding: 20px;

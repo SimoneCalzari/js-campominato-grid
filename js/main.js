@@ -1,97 +1,76 @@
 'use strict';
 
-/*
+//INIZIO FUNZIONI
 
-L'utente clicca su un bottone che genererà una griglia di gioco quadrata.
-Ogni cella ha un numero progressivo, da 1 a 100.
-Ci saranno quindi 10 caselle per ognuna delle 10 righe.
-Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro ed emetto un messaggio in console con il numero della cella cliccata.
-
-*/
-
-
-
+// FUNZIONE CREAZIONE,INSERIMENTO E AGGIUNTA EVENTLISTENER ALLE CELLE
 function newElements(typeElement, classElement, numElements) {
-  for (let i = 1; i < numElements + 1; i++) {
-    const element = document.createElement(typeElement);
-    element.classList = classElement;
-    element.innerText = `${i}`;
-    field.append(element);
-  }
-}
-
-function elementsListener (numElements) {
-  for (let i = 1; i < numElements + 1; i++) {
-    const element = document.querySelector(`div.field div:nth-child(${i})`);
-    element.addEventListener('click',
+  //CICLO FOR PER CREARE E INSERIRE UN CERTO NUMERO DI CELLE
+  for (let i = 1; i <= numElements; i++) {
+    const cell = document.createElement(typeElement); // CREO NUOVA CELLA
+    cell.classList = classElement; // ASSEGNO LA CLASSE
+    cell.innerHTML = `${i}`; // INSERISCO CONTENUTO
+    field.append(cell); // INSERISCO NELL HTML DENTRO AL FIELD
+    cell.addEventListener('click',
     function() {
-      element.classList.add('active');
-      console.log(`La cella cliccata è la ${i}`);
+      cell.classList.add('cell-clicked'); // AGGIUNGO CLASSE AL CLICKED PER CAMBIARE SFONDO CELLA
+      console.log(`La cella cliccata è la ${i}`); // MOSTRO IN CONSOLE LA CELLA CLICCATA
     })
   }
-
 }
 
+// FUNZIONE CHE AGGIUNGE UN EVENTLISTENER AL BOTTONE PLAY QUANDO CLICCO
 function clickPlay() {
   button.addEventListener('click', 
     function() {
-      field.innerHTML = '';
-      field.classList.add('active');
-      newElements('div', 'cell-10', 100);
-      elementsListener(100);
-      select.value = 'Hard';
+      field.innerHTML = ''; // SVUOTO FIELD ALTRIMENTI ANDREI AD AGGIUNGERE CELLE AD UN SECONDO CLICK
+      field.classList.add('active'); // FIELD DI DEFAULT NON VISIBILE, AGGIUNGO CLASSE PER RENDERLO VISIBILE
+      newElements('div', 'cell-10', 100); // RICHIAMO FUNZIONE GENERA CELLA E GLI PASSO I PARAMETRI PER LA DIFFICOLTà DI DEFAULT
+      select.value = 'Hard'; // RIPORTO IL SELECT L VALORE DI DEFAULT
     }
   )
 }
 
+// FUNZIONE PER GESTIRE I LIVELLI DI DIFFICOLTA E CAMBIARE IL NUMERO DI CELLE
 function selectDifficulty() {
+  // ASCOLTATORE DI EVENTI QUANDO IL VALUE DI SELECT CAMBIA
   select.addEventListener('change',
   function() {
+    // CASO DIFFICOLTà SEMPLICE
     if (select.value === 'Easy'){
       field.innerHTML = '';
       field.classList.add('active');
       newElements('div', 'cell-7', 49);
-      elementsListener(49);
-    } else if (select.value === 'Medium'){
+    } 
+    // CASO DIFFICOLTà MEDIA
+    else if (select.value === 'Medium'){
       field.innerHTML = '';
       field.classList.add('active');
       newElements('div', 'cell-9', 81);
-      elementsListener(81);
-    } else {
+    }
+    // CASO DIFFICOLTà DIFFICILE(DEFAULT) 
+    else {
       field.innerHTML = '';
       field.classList.add('active');
       newElements('div', 'cell-10', 100);
-      elementsListener(100);
     }
   }
   )
 }
 
+//FINE FUNZIONI
 
 
 
 
+
+
+// VARIABILI DEGLI ELEMENTI DEL DOM UTILIZZATI NELLA FUNCTION
 const field = document.querySelector('div.field');
-console.log(field);
-
 const button = document.querySelector('button');
-console.log(button);
-
 const select = document.querySelector('select');
-console.log(select);
 
-// const difficultyHard = document.querySelector('select option:nth-of-type(1)');
-// console.log(difficultyHard);
-
-// const difficultyMid = document.querySelector('select option:nth-of-type(2)');
-// console.log(difficultyMid);
-
-// const difficultyEasy = document.querySelector('select option:nth-of-type(3)');
-// console.log(difficultyEasy);
-
-
+// CHIAMO LE FUNZIONI PER IL MIO GIOCO
 clickPlay();
-
 selectDifficulty();
 
 
